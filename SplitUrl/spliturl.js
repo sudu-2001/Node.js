@@ -8,11 +8,11 @@ http.createServer(function(req,res){
 
 	var q=url.parse(req.url,true);
 
-	var filename="." + q.pathname;
+	var filename= '.' + q.pathname;
 
-	if(filename === './' || filename === './index.html'){
+	if(filename === './' || filename === '/index.html'){
 
-		filename='./index.html';
+		return filename='./index.html';
 
 	}
 
@@ -20,11 +20,11 @@ http.createServer(function(req,res){
 
 		if(err){
 
-			console.log("error is found"+err);
+			console.log('Error Found!'+err);
 
 			res.writeHead(404, 'Content-Type:text/html');
 
-			return res.end('File not found');
+			return res.end('File Not Found');
 
 		}
 
@@ -32,10 +32,10 @@ http.createServer(function(req,res){
 
 		res.write(data);
 
-		res.end();
+		res.end("Bye");
 
 	});
 
 }).listen(8080);
 
-console.log("The server is running on http://localhost:8080");
+console.log('http://localhost:8080/winter.html');

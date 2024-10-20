@@ -9,3 +9,5 @@ http.createServer(function(req,res){
 	res.end('Byee!!!');
 
 }).listen(8080);
+
+console.log('Running on http://localhost:8080');

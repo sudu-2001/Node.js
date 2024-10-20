@@ -1,9 +1,7 @@
 var fs=require('fs');
 
-fs.appendFile('myfile.txt','hello buddy',function(err){
+fs.appendFile('file.txt','Hi, its sudarshan', function(err){
 
-	if(err) throw err;
-
-	console.log('Saved!!');
+	console.log('Apppended');
 
 });
