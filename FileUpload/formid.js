@@ -25,16 +25,18 @@ http.createServer(function(req,res){
 
 		res.writeHead(200, {'Content-Type':'text/html'});
 
-		res.write('<form action="fileupload" method="post" enctype="multipar/form-data">');
+		res.write('<form action="fileupload" method="post" enctype="multipart/form-data">');
 
-		res.write('<input type="file" type="fileupload"><br>');	
+		res.write('<input type="file" name="fileupload"><br>');
 
 		res.write('<input type="submit">');
 
 		res.write('</form>');
 
+		res.end();
+
 	}
 
 }).listen(8080);
 
-console.log('Running on http://localhost:8080');
+console.log('running on http://localhost:8080');
