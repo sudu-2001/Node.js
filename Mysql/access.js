@@ -20,25 +20,27 @@ http.createServer(function(req,res){
 
 	conn.connect(function(err){
 
-		if (err) throw err;
+		if(err) throw err;
 
-		console.log('Connected');
-
-		res.write('Connected');
+		console.log('Connected!');
 
 	});
 
-	conn.query('SELECT * FROM customer;' ,function(err,result,fields){
+	conn.query('SELECT * FROM orders;',function(err,result,fields){
 
-		res.write('<table border="1"> <tr>');
+		if(err) throw err;
 
-		for(let feild in fields){
+		res.write('<table border="1"> <tr>')
 
-			res.write('<th>' + feild.name + '</th>');
+		for(let i=0; i<fields.length; i++){
+
+			res.write('<th>' + fields[i].name + '</th>');
 
 		}
 
-		result.forEach(row=>{
+		res.write('</tr>');
+
+		result.forEach(row =>{
 
 			res.write('<tr>');
 
@@ -58,7 +60,7 @@ http.createServer(function(req,res){
 
 	});
 
-	console.log('Query Executed Successfully');
+	console.log('Successfully performed the Query');
 
 }).listen(8080);
 
