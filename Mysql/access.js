@@ -26,7 +26,7 @@ http.createServer(function(req,res){
 
 	});
 
-	conn.query('SELECT * FROM orders;',function(err,result,fields){
+	conn.query('SELECT id,company FROM customer;',function(err,result,fields){
 
 		if(err) throw err;
 
