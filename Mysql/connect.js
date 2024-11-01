@@ -4,15 +4,17 @@ var mysql=require('mysql');
 
 http.createServer(function(req,res){
 
-	res.writeHead(200, {'Content-Type':'text/html'});
+	res.writeHead(200, { 'Content-Type' : 'text/html' });
 
 	var conn=mysql.createConnection({
 
-		host:'localhost',
+		host: 'localhost',
 
 		user: 'root',
 
-		password: 'Sudu@2001'
+		password: 'Sudu@2001',
+
+		database: 'customerorder'
 
 	});
 
@@ -20,9 +22,19 @@ http.createServer(function(req,res){
 
 		if (err) throw err;
 
-		console.log("Connected");
+		console.log('Connected !!');
 
-		res.write("Connected");
+		res.write('Connected !!');
+
+	})
+
+	conn.query('Select * from customer;',function(err,result){
+
+		if (err) throw err;
+
+		console.log(result);
+
+		res.write(result);
 
 		res.end();
 
@@ -30,4 +42,4 @@ http.createServer(function(req,res){
 
 }).listen(8080);
 
-console.log("Running on http://localhost:8080");
+console.log("This is listening in http://localhost:8080");
